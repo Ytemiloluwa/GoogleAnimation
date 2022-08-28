@@ -11,8 +11,6 @@ import SwiftUI
 struct ContentView: View {
     
     @State private var onTop = false
-    @State private var type = AnimationType(name: "default", animation: .default)
-    @State private var showSelection = false
     
     var body: some View {
         
@@ -104,31 +102,7 @@ struct ContentView: View {
                 Button{ onTop.toggle()} label: {
                     Text("animate")
                 }
-                
-                //.onTapGesture(count: 5, perform: {})
-            
-            
-          
-            //            Button{ showSelection = true} label: {
-            //
-            //                Text("Choose Animation")
-            //            }.actionSheet(isPresented: $showSelection, content: {
-            //                actionSheet
-            //            })
-            //
-            //            Text("Current: \(type.name)")
-            //        }
-            
         }
-        //
-        //    var actionSheet: ActionSheet {
-        //
-        //        ActionSheet(title: Text("Animations"), buttons: AnimationType.all.map { type in
-        //
-        //                .default(Text(type.name), action: { self.type = type})
-        //
-        //        } + [.destructive(Text("Cancel"))] )
-        //    }
         
     }
     struct ContentView_Previews: PreviewProvider {
@@ -136,20 +110,5 @@ struct ContentView: View {
             ContentView()
         }
     }
-    
-    struct AnimationType {
-        
-        let name: String
-        
-        let animation: Animation
-        
-        static var all: [AnimationType] = [
-            .init(name: "default", animation: .default),
-            .init(name: "easeIn", animation: .easeIn),
-            .init(name: "easeOut", animation: .easeOut),
-            .init(name: "easeInOut", animation: .easeInOut),
-            .init(name: "linear", animation: .linear),
-            .init(name: "spring", animation: .spring()),]
-    }
-    
 }
+
