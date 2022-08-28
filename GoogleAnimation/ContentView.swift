@@ -37,11 +37,11 @@ struct ContentView: View {
                     ZStack {
                         
                         Circle()
-                            .fill(onTop ? Color.pink : Color.white)
+                            .fill(onTop ? Color.pink : Color.black)
                             .frame(width: 50, height: 50)
                         Text("o")
                             .font(Font.system(size: 40, weight: .light, design: .rounded))
-                            .foregroundColor(.black)
+                            .foregroundColor(.white)
                         
                         
                     }.animation(.easeInOut(duration: 5))
@@ -49,11 +49,11 @@ struct ContentView: View {
                     ZStack {
                         
                         Circle()
-                            .fill(onTop ? Color.purple : Color.white)
+                            .fill(onTop ? Color.purple : Color.black)
                             .frame(width: 50, height: 50)
                         Text("o")
                             .font(Font.system(size: 40, weight: .light, design: .rounded))
-                            .foregroundColor(.black)
+                            .foregroundColor(.white)
                         
                         
                     }.animation(.easeInOut(duration: 6))
