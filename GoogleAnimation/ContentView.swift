@@ -101,12 +101,14 @@ struct ContentView: View {
                 
             }
             
-            Button{ onTop.toggle()} label: {
+                Button{ onTop.toggle()} label: {
+                    Text("animate")
+                }
                 
-                Text("Animate")
-                
-                
-            }
+                //.onTapGesture(count: 5, perform: {})
+            
+            
+          
             //            Button{ showSelection = true} label: {
             //
             //                Text("Choose Animation")
