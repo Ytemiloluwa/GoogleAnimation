@@ -25,70 +25,79 @@ struct ContentView: View {
                     ZStack {
                         
                         Circle()
-                            .fill(onTop ? Color.red : Color.red)
+                            .fill(onTop ? Color.orange : Color.red)
                             .frame(width: 50, height: 50)
                         
                         Text("G")
-                            .font(Font.system(size: 25, weight: .medium, design: .default))
+                            .font(Font.system(size: 40, weight: .light, design: .rounded))
                             .foregroundColor(.white)
                         
-                    }
-                    ForEach(0..<2) { _ in
-                        ZStack {
-
-                            Circle()
-                                .fill(LinearGradient(colors: [.orange, .red, .green, .yellow], startPoint: .leading, endPoint: .trailing))
-                                .frame(width: 50, height: 50)
-                            Text("O")
-                                .font(Font.system(size: 25, weight: .medium, design: .default))
-                                .foregroundColor(.white)
-
-                        }
-//                        .animation(.interactiveSpring(response: 0.23, dampingFraction: 0.10, blendDuration: 0.15), value: 1)
-                        .animation(.easeInOut(duration: 3))
-                 
-                    }
-                    ZStack {
-                        
-                        Circle()
-                            .fill(onTop ? Color.green : Color.green)
-                            .frame(width: 50, height: 50)
-                        
-                        
-                        Text("G")
-                            .font(Font.system(size: 25, weight: .medium, design: .default))
-                            .foregroundColor(.white)
-                        
-                    }
+                    }.animation(.easeInOut(duration: 4))
                     
                     ZStack {
                         
                         Circle()
-                            .fill(onTop ? Color.yellow : Color.yellow)
+                            .fill(onTop ? Color.pink : Color.white)
                             .frame(width: 50, height: 50)
+                        Text("o")
+                            .font(Font.system(size: 40, weight: .light, design: .rounded))
+                            .foregroundColor(.black)
                         
-                        Text("L")
-                            .font(Font.system(size: 25, weight: .medium, design: .default))
-                            .foregroundColor(.white)
                         
-                    }
+                    }.animation(.easeInOut(duration: 5))
                     
                     ZStack {
                         
                         Circle()
-                            .fill(onTop ? Color.blue : Color.blue)
+                            .fill(onTop ? Color.purple : Color.white)
+                            .frame(width: 50, height: 50)
+                        Text("o")
+                            .font(Font.system(size: 40, weight: .light, design: .rounded))
+                            .foregroundColor(.black)
+                        
+                        
+                    }.animation(.easeInOut(duration: 6))
+                    ZStack {
+                        
+                        Circle()
+                            .fill(onTop ? Color.brown : Color.green)
                             .frame(width: 50, height: 50)
                         
-                        Text("E")
-                            .font(Font.system(size: 30, weight: .medium, design: .default))
+                        
+                        Text("G")
+                            .font(Font.system(size: 40, weight: .light, design: .rounded))
                             .foregroundColor(.white)
                         
-                    }
+                    }.animation(.easeInOut(duration: 7))
+                    
+                    ZStack {
+                        
+                        Circle()
+                            .fill(onTop ? .cyan : Color.yellow)
+                            .frame(width: 50, height: 50)
+                        
+                        Text("l")
+                            .font(Font.system(size: 40, weight: .light, design: .rounded))
+                            .foregroundColor(.white)
+                        
+                    }.animation(.easeInOut(duration: 8))
+                    
+                    ZStack {
+                        
+                        Circle()
+                            .fill(onTop ? .mint : Color.blue)
+                            .frame(width: 50, height: 50)
+                        
+                        Text("e")
+                            .font(Font.system(size: 40, weight: .light, design: .rounded))
+                            .foregroundColor(.white)
+                        
+                    }.animation(.easeInOut(duration: 9))
                     
                 }
                 .offset(y: onTop ? -geometry.size.height / 2 : geometry.size.height / 2)
-                .animation(self.type.animation.speed(0.15))
-                .padding(.horizontal)
+//                .rotation3DEffect(Angle(degrees: -5), axis: (x: 5, y: 10, z: 15))
+                .padding(.leading)
                 
             }
             
@@ -98,46 +107,47 @@ struct ContentView: View {
                 
                 
             }
-            Button{ showSelection = true} label: {
-                
-                Text("Choose Animation")
-            }.actionSheet(isPresented: $showSelection, content: {
-                actionSheet
-            })
+            //            Button{ showSelection = true} label: {
+            //
+            //                Text("Choose Animation")
+            //            }.actionSheet(isPresented: $showSelection, content: {
+            //                actionSheet
+            //            })
+            //
+            //            Text("Current: \(type.name)")
+            //        }
             
-            Text("Current: \(type.name)")
         }
+        //
+        //    var actionSheet: ActionSheet {
+        //
+        //        ActionSheet(title: Text("Animations"), buttons: AnimationType.all.map { type in
+        //
+        //                .default(Text(type.name), action: { self.type = type})
+        //
+        //        } + [.destructive(Text("Cancel"))] )
+        //    }
         
     }
+    struct ContentView_Previews: PreviewProvider {
+        static var previews: some View {
+            ContentView()
+        }
+    }
     
-    var actionSheet: ActionSheet {
+    struct AnimationType {
         
-        ActionSheet(title: Text("Animations"), buttons: AnimationType.all.map { type in
-            
-                .default(Text(type.name), action: { self.type = type})
-            
-        } + [.destructive(Text("Cancel"))] )
+        let name: String
+        
+        let animation: Animation
+        
+        static var all: [AnimationType] = [
+            .init(name: "default", animation: .default),
+            .init(name: "easeIn", animation: .easeIn),
+            .init(name: "easeOut", animation: .easeOut),
+            .init(name: "easeInOut", animation: .easeInOut),
+            .init(name: "linear", animation: .linear),
+            .init(name: "spring", animation: .spring()),]
     }
     
 }
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
-
-struct AnimationType {
-    
-    let name: String
-    
-    let animation: Animation
-    
-    static var all: [AnimationType] = [
-        .init(name: "default", animation: .default),
-        .init(name: "easeIn", animation: .easeIn),
-        .init(name: "easeOut", animation: .easeOut),
-        .init(name: "easeInOut", animation: .easeInOut),
-        .init(name: "linear", animation: .linear),
-        .init(name: "spring", animation: .spring()),]
-}
-
